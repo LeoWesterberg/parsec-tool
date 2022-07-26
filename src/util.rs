@@ -90,3 +90,4 @@ fn hash_data(data: &[u8], alg: Hash) -> Result<Vec<u8>> {
     hasher.update(data);
     Ok(hasher.finalize().to_vec())
 }
+

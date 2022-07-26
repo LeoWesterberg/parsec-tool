@@ -931,6 +931,7 @@ dependencies = [
  "sha2",
  "structopt",
  "thiserror",
+ "time 0.3.7",
 ]
 
 [[package]]

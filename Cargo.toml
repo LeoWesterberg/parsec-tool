@@ -29,6 +29,7 @@ serde = "1.0.123"
 sha2 = "0.9.9"
 log = "0.4.14"
 rcgen = { version = "0.9.2", features = ["pem"] }
+time = "0.3.7"
 
 [lib]
 name = "parsec_tool"

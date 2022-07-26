@@ -3,6 +3,7 @@
 
 //! Subcommand implementations. Interacts with parsec-client-rust.
 
+mod create_certificate;
 mod create_csr;
 mod create_ecc_key;
 mod create_rsa_key;
@@ -26,7 +27,7 @@ use crate::subcommands::{
     decrypt::Decrypt, delete_client::DeleteClient, delete_key::DeleteKey, encrypt::Encrypt,
     export_public_key::ExportPublicKey, generate_random::GenerateRandom,
     list_authenticators::ListAuthenticators, list_clients::ListClients, list_keys::ListKeys,
-    list_opcodes::ListOpcodes, list_providers::ListProviders, ping::Ping, sign::Sign,
+    list_opcodes::ListOpcodes, list_providers::ListProviders, ping::Ping, sign::Sign, create_certificate::CreateCertificate,
 };
 use parsec_client::BasicClient;
 use structopt::StructOpt;
@@ -81,6 +82,9 @@ pub enum Subcommand {
 
     /// Encrypt data using the algorithm of the key
     Encrypt(Encrypt),
+
+    /// Create certificate
+    CreateCertificate(CreateCertificate),
 }
 
 impl Subcommand {
@@ -103,6 +107,7 @@ impl Subcommand {
             Subcommand::DeleteKey(cmd) => cmd.run(client),
             Subcommand::CreateCsr(cmd) => cmd.run(client),
             Subcommand::Encrypt(cmd) => cmd.run(client),
+            Subcommand::CreateCertificate(cmd) => cmd.run(client),
         }
     }
     /// Indicates if subcommand requires authentication
